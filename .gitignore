@@ -339,7 +339,13 @@ ASALocalRun/
 
 .vs\config
 
-/**/Bussines/obj/debug/*
+/**/Busines/obj/debug/*
 
 
 /**DAL/bin/*
+
+/**.vs/TodoAppV1/v15/*
+
+/**DAL/obj/Debug/*
+
+/**TodoAppV/obj/Debug/*

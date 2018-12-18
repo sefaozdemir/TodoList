@@ -10,3 +10,15 @@ C:\Users\ext02d13833\source\repos\TodoAppV1\Busines\bin\Debug\EntityFramework.xm
 C:\Users\ext02d13833\source\repos\TodoAppV1\Busines\obj\Debug\Business.csproj.CopyComplete
 C:\Users\ext02d13833\source\repos\TodoAppV1\Busines\obj\Debug\Busines.dll
 C:\Users\ext02d13833\source\repos\TodoAppV1\Busines\obj\Debug\Busines.pdb
+C:\Users\ext02d13833\Documents\Proje\TodoList\Busines\bin\Debug\Busines.dll
+C:\Users\ext02d13833\Documents\Proje\TodoList\Busines\bin\Debug\Busines.pdb
+C:\Users\ext02d13833\Documents\Proje\TodoList\Busines\bin\Debug\DAL.dll
+C:\Users\ext02d13833\Documents\Proje\TodoList\Busines\bin\Debug\EntityFramework.dll
+C:\Users\ext02d13833\Documents\Proje\TodoList\Busines\bin\Debug\DAL.pdb
+C:\Users\ext02d13833\Documents\Proje\TodoList\Busines\bin\Debug\DAL.dll.config
+C:\Users\ext02d13833\Documents\Proje\TodoList\Busines\bin\Debug\EntityFramework.xml
+C:\Users\ext02d13833\Documents\Proje\TodoList\Busines\obj\Debug\Business.csprojResolveAssemblyReference.cache
+C:\Users\ext02d13833\Documents\Proje\TodoList\Busines\obj\Debug\Business.csproj.CoreCompileInputs.cache
+C:\Users\ext02d13833\Documents\Proje\TodoList\Busines\obj\Debug\Business.csproj.CopyComplete
+C:\Users\ext02d13833\Documents\Proje\TodoList\Busines\obj\Debug\Busines.dll
+C:\Users\ext02d13833\Documents\Proje\TodoList\Busines\obj\Debug\Busines.pdb
