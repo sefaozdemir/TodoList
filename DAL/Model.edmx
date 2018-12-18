@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TODOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORIES">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TODO_LIST">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contents" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="255" />
+          <Property Name="PriorityNo" Type="int" />
+          <Property Name="CategoriId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__TODO_LIST__Categ__267ABA7A">
+          <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="1" />
+          <End Role="TODO_LIST" Type="Self.TODO_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TODO_LIST">
+              <PropertyRef Name="CategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TODOModelStoreContainer">
+          <EntitySet Name="CATEGORIES" EntityType="Self.CATEGORIES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TODO_LIST" EntityType="Self.TODO_LIST" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TODO_LIST__Categ__267ABA7A" Association="Self.FK__TODO_LIST__Categ__267ABA7A">
+            <End Role="CATEGORIES" EntitySet="CATEGORIES" />
+            <End Role="TODO_LIST" EntitySet="TODO_LIST" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TODOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CATEGORIES">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TODO_LIST" Relationship="Self.FK__TODO_LIST__Categ__267ABA7A" FromRole="CATEGORIES" ToRole="TODO_LIST" />
+        </EntityType>
+        <EntityType Name="TODO_LIST">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contents" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PriorityNo" Type="Int32" />
+          <Property Name="CategoriId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CATEGORIES" Relationship="Self.FK__TODO_LIST__Categ__267ABA7A" FromRole="TODO_LIST" ToRole="CATEGORIES" />
+        </EntityType>
+        <Association Name="FK__TODO_LIST__Categ__267ABA7A">
+          <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="1" />
+          <End Role="TODO_LIST" Type="Self.TODO_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TODO_LIST">
+              <PropertyRef Name="CategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TODOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATEGORIES" EntityType="Self.CATEGORIES" />
+          <EntitySet Name="TODO_LIST" EntityType="Self.TODO_LIST" />
+          <AssociationSet Name="FK__TODO_LIST__Categ__267ABA7A" Association="Self.FK__TODO_LIST__Categ__267ABA7A">
+            <End Role="CATEGORIES" EntitySet="CATEGORIES" />
+            <End Role="TODO_LIST" EntitySet="TODO_LIST" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TODOModelStoreContainer" CdmEntityContainer="TODOEntities">
+          <EntitySetMapping Name="CATEGORIES">
+            <EntityTypeMapping TypeName="TODOModel.CATEGORIES">
+              <MappingFragment StoreEntitySet="CATEGORIES">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TODO_LIST">
+            <EntityTypeMapping TypeName="TODOModel.TODO_LIST">
+              <MappingFragment StoreEntitySet="TODO_LIST">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="PriorityNo" ColumnName="PriorityNo" />
+                <ScalarProperty Name="CategoriId" ColumnName="CategoriId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

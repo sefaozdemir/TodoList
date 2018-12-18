@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TODOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CATEGORIES">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ParentId" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TODO_LIST" Relationship="Self.FK__TODO_LIST__Categ__267ABA7A" FromRole="CATEGORIES" ToRole="TODO_LIST" />
+  </EntityType>
+  <EntityType Name="TODO_LIST">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Contents" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="ImageUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PriorityNo" Type="Int32" />
+    <Property Name="CategoriId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CATEGORIES" Relationship="Self.FK__TODO_LIST__Categ__267ABA7A" FromRole="TODO_LIST" ToRole="CATEGORIES" />
+  </EntityType>
+  <Association Name="FK__TODO_LIST__Categ__267ABA7A">
+    <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="1" />
+    <End Role="TODO_LIST" Type="Self.TODO_LIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIES">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TODO_LIST">
+        <PropertyRef Name="CategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TODOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CATEGORIES" EntityType="Self.CATEGORIES" />
+    <EntitySet Name="TODO_LIST" EntityType="Self.TODO_LIST" />
+    <AssociationSet Name="FK__TODO_LIST__Categ__267ABA7A" Association="Self.FK__TODO_LIST__Categ__267ABA7A">
+      <End Role="CATEGORIES" EntitySet="CATEGORIES" />
+      <End Role="TODO_LIST" EntitySet="TODO_LIST" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
