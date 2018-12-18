@@ -336,3 +336,10 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+.vs\config
+
+/**/Bussines/obj/debug/*
+
+
+/**DAL/bin/*
