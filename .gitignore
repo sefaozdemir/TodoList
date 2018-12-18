@@ -349,3 +349,12 @@ ASALocalRun/
 /**DAL/obj/Debug/*
 
 /**TodoAppV/obj/Debug/*
+
+*.suo
+
+*.cache
+
+
+*.ide
+*.ide-shm
+*.ide.wal
